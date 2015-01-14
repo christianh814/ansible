@@ -1,0 +1,5 @@
+---
+# Variables listed here are applicable broker hosts
+
+valid_gear_sizes: "small,medium,xpaas"
+dns_entries: "broker:{{ dnsip }},activemq:{{ dnsip }},node1dev:172.16.1.221"

@@ -1,0 +1,8 @@
+---
+- name: install base packages
+  yum: name={{ item }} state=present
+  with_items:
+    - ntp
+    - vim
+- name: setup ntp service
+  service: name=ntpd state=started enabled=yes

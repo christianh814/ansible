@@ -1,0 +1,12 @@
+#!/bin/bash -fuh
+subscription-manager repos --disable="*"
+subscription-manager repos --enable=rhel-6-server-ose-2.2-node-rpms	
+subscription-manager repos --enable=jb-eap-6-for-rhel-6-server-rpms
+subscription-manager repos --enable=jb-ews-2-for-rhel-6-server-rpms        
+subscription-manager repos --enable=rhel-6-server-ose-2.2-jbosseap-rpms
+subscription-manager repos --enable=rhel-6-server-ose-2.2-jbossamq-rpms
+subscription-manager repos --enable=rhel-6-server-rpms                  
+subscription-manager repos --enable=rhel-server-rhscl-6-rpms
+touch /usr/local/src/rhsm_node-small_reposetup.flg
+##
+##

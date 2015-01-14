@@ -1,0 +1,4 @@
+---
+- include: nodesmall-repo-setup.yml
+- include: pkg-install.yml
+- include: nodesmall-install.yml

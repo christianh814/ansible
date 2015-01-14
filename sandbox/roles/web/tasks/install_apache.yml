@@ -1,0 +1,16 @@
+---
+- name: install apache and php
+  yum: name={{ item }} state=present
+  with_items:
+    - httpd
+    - php
+    - mod_ssl
+- name: instal apache template
+  template: src=httpd.conf.j2 dest=/etc/httpd/conf/httpd.conf owner=root group=root mode=0644 setype=_default
+- name: setup apache service
+  service: name=httpd state=started enabled=yes
+- name: network port setup
+  firewalld: port=8080/tcp permanent=true state=enabled
+- name: hosts entries for OS1
+  template: src=etc_hosts.j2 dest=/etc/hosts owner=root group=root mode=0644 setype=_default
+  when: rh_os1_host == "true"

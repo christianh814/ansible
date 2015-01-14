@@ -1,0 +1,5 @@
+---
+- name: install broker repo setup script
+  template: src=rhsm_broker_reposetup.sh.j2 dest=/usr/local/src/rhsm_broker_reposetup.sh owner=root group=root mode=0755 setype=_default
+- name: run broker repo setup script
+  shell: /usr/local/src/rhsm_broker_reposetup.sh creates=/usr/local/src/rhsm_broker_reposetup.flg

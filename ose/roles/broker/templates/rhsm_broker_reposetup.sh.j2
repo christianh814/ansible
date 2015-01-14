@@ -1,0 +1,9 @@
+#!/bin/bash -fuh
+subscription-manager repos --disable="*"
+subscription-manager repos --enable=rhel-6-server-ose-2.2-infra-rpms      
+subscription-manager repos --enable=rhel-6-server-ose-2.2-rhc-rpms      
+subscription-manager repos --enable=rhel-6-server-rpms
+subscription-manager repos --enable=rhel-server-rhscl-6-rpms
+touch /usr/local/src/rhsm_broker_reposetup.flg
+##
+##

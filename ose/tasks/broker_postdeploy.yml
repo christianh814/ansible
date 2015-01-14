@@ -1,0 +1,14 @@
+---
+# post deploy for broker
+
+- name: automatic postdeploy
+  shell: /bin/bash "{{ ose_script }}" actions=post_deploy default_districts=true  broker_hostname="{{ broker_name }}" 2>&1 | tee -a /usr/local/src/openshift.sh.post.log
+  args:
+    creates: /usr/local/src/openshift.sh.post.log
+  when: default_post_deploy == "yes"
+
+- name: custom postdeploy
+  shell: /bin/bash "{{ ose_script }}" actions=post_deploy default_districts=false broker_hostname="{{ broker_name }}" district_mappings="{{ district_mappings }}" 2>&1 | tee -a /usr/local/src/openshift.sh.post.log
+  args:
+    creates: /usr/local/src/openshift.sh.post.log
+  when: default_post_deploy == "no"

@@ -1,0 +1,9 @@
+---
+- name: vimrc file
+  template: src=etc_vimrc.j2 dest=/etc/vimrc owner=root group=root mode=0644 setype=_default
+- name: root bashrc file
+  template: src=root_bashrc.j2 dest=/root/.bashrc owner=root group=root mode=0644 setype=_default
+- name: downloading OSE scripts
+  shell: /usr/bin/curl -k -s https://raw.githubusercontent.com/openshift/openshift-extras/enterprise-2.2/enterprise/install-scripts/generic/openshift.sh -o /usr/local/src/openshift.sh
+  args:
+    creates: /usr/local/src/openshift.sh

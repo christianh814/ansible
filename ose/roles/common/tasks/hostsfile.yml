@@ -1,0 +1,6 @@
+---
+- name: hosts entries for OS1
+  template: src=etc_hosts.j2 dest=/etc/hosts owner=root group=root mode=0644 setype=_default
+  when: rh_os1_host == "true"
+- name: working dir
+  file: path=/usr/local/src state=directory owner=root group=root mode=0755 setype=_default

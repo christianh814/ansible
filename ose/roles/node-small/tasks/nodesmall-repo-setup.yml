@@ -1,0 +1,5 @@
+---
+- name: install node-small repo setup script
+  template: src=rhsm_node-small_reposetup.sh.j2 dest=/usr/local/src/rhsm_node-small_reposetup.sh owner=root group=root mode=0755 setype=_default
+- name: run node-small repo setup script
+  shell: /usr/local/src/rhsm_node-small_reposetup.sh creates=/usr/local/src/rhsm_node-small_reposetup.flg

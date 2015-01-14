@@ -1,0 +1,7 @@
+#
+[broker]
+brokerdev.example.net
+[node-eap]
+node1dev.osedev.example.net
+##
+##

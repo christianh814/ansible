@@ -1,0 +1,14 @@
+---
+# This playbook deploys the whole OSE stack.
+
+- name: apply common configuration to all servers
+  hosts: all
+  remote_user: "{{ uservar}}"
+  roles:
+    - common
+
+- name: Install broker componets
+  hosts: broker
+  remote_user: "{{ uservar}}"
+  roles:
+    - broker

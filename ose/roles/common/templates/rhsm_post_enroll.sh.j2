@@ -1,0 +1,36 @@
+#!/bin/bash -fuh
+subscription-manager repos --disable rhel-sfs-for-rhel-6-server-aus-rpms
+subscription-manager repos --disable rhel-hpn-for-rhel-6-server-rpms
+subscription-manager repos --disable rhel-6-server-mrg-grid-rpms
+subscription-manager repos --disable rhel-rs-for-rhel-6-server-eus-rpms
+subscription-manager repos --disable rhsc-2.0-for-rhel-6-server-rpms
+subscription-manager repos --disable rhel-rs-for-rhel-6-server-aus-rpms
+subscription-manager repos --disable rhs-2.0-for-rhel-6-server-rpms
+subscription-manager repos --disable rhel-server-6-rhds-9-rpms
+subscription-manager repos --disable rhel-sjis-for-rhel-6-server-rpms
+subscription-manager repos --disable rhel-sfs-for-rhel-6-server-eus-rpms
+subscription-manager repos --disable rhel-6-server-realtime-rpms
+subscription-manager repos --disable rhel-sap-for-rhel-6-server-rpms
+subscription-manager repos --disable rhel-sap-hana-for-rhel-6-server-rpms
+subscription-manager repos --disable rhel-6-server-aus-rpms
+subscription-manager repos --disable rhel-rs-for-rhel-6-server-rpms
+subscription-manager repos --disable rhel-ha-for-rhel-6-server-rpms
+subscription-manager repos --disable rhel-server-dts-6-eus-rpms
+subscription-manager repos --disable rhel-6.2-scalefs-server-for-rhs-2.0-rpms
+subscription-manager repos --disable rhel-ha-for-rhel-6-server-eus-rpms
+subscription-manager repos --disable rhel-6.2-server-for-rhs-2.0-rpms
+subscription-manager repos --disable rhel-scalefs-for-rhel-6-server-rpms
+subscription-manager repos --disable rhel-6-server-mrg-grid-execute-rpms
+subscription-manager repos --disable rhel-server-dts-6-rpms
+subscription-manager repos --disable rhel-lb-for-rhel-6-server-rpms
+subscription-manager repos --disable rhel-server-dts2-6-eus-rpms
+subscription-manager repos --disable rhel-lb-for-rhel-6-server-aus-rpms
+subscription-manager repos --disable rhel-6-server-eus-rpms
+subscription-manager repos --disable rhel-ha-for-rhel-6-server-aus-rpms
+subscription-manager repos --disable rhel-lb-for-rhel-6-server-eus-rpms
+subscription-manager repos --disable rhel-server-dts2-6-rpms
+subscription-manager repos --disable rhel-6-server-htb-rpms
+subscription-manager repos --disable rhel-6-server-mrg-management-rpms
+touch /usr/local/src/rhsm_post_enroll.flg
+##
+##

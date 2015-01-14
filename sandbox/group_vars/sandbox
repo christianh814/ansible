@@ -1,0 +1,7 @@
+---
+# The variables file used by the playbooks in the web group.
+# These don't have to be explicitly imported by vars_files: they are autopopulated.
+http_port: 8080
+rh_os1_host: false
+##
+##

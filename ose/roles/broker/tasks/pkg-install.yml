@@ -1,0 +1,11 @@
+---
+- name: install broker packages
+  yum: name={{ item }} state=present
+  with_items:
+    - openshift-enterprise-release
+    - ruby
+    - unzip
+    - curl
+    - ruby193-ruby
+    - yum-plugin-priorities
+    - wget
