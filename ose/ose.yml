@@ -12,3 +12,15 @@
   remote_user: "{{ uservar}}"
   roles:
     - broker
+
+- name: Install Node componets - Small
+  hosts: node-small
+  remote_user: "{{ uservar}}"
+  roles:
+    -  node-small
+
+- name: Broker PostDeploy
+  hosts: broker
+  remote_user: "{{ uservar}}"
+  tasks:
+    - include: tasks/broker_postdeploy.yml
