@@ -4,4 +4,6 @@
 - name: running yum validator
   shell: /usr/local/src/yum_validator.sh creates=/usr/local/src/rhsm_broker_install.flg
 - name: install broker infrastructure
-  shell: blahbalsh --- creates=/usr/local/src/rhsm_broker_install.flg
+  shell: /bin/bash "{{ ose_script }}" install_components="broker,named,activemq,datastore" mcollective_password="{{ mcollective_password }}" domain="{{ ose_domain }}" hosts_domain="{{ ose_host_domain }}" named_ip_addr="{{ dnsip }}" broker_hostname="{{ broker_name }}" named_entries="{{ dns_entries }}" valid_gear_sizes="{{ valid_gear_sizes}} " default_gear_capabilities=small 2>&1 | tee -a "{{ ose_script_log }}"
+  args:
+    creates: "{{ ose_script_log }}"
