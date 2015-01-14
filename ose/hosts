@@ -1,7 +1,7 @@
 #
 [broker]
 brokerdev.example.net
-[node-eap]
+[node-small]
 node1dev.osedev.example.net
 ##
 ##

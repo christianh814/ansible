@@ -2,8 +2,8 @@
 # Variables listed here are applicable to all host groups
 
 rh_os1_host: false
-rhsm_username: xxxxxxxxxxxxxx
-rhsm_password: xxxxxxxxxxxxxx
+rhsm_username: XXXXXXXXXXXXXXXXXXXXXXXX
+rhsm_password: XXXXXXXXXXXXXXXXXXXXXXXX
 
 #OSE Specific
 ose_domain: osedev.example.net
@@ -12,3 +12,4 @@ broker_name: brokerdev.osedev.example.net
 dnsip: 172.16.1.220
 ose_script: /usr/local/src/openshift.sh
 ose_script_log: /usr/local/src/openshift.sh.inst.log
+mcollective_password: 7677aa8e409c47b9a826a52cd145f739

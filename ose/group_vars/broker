@@ -3,3 +3,5 @@
 
 valid_gear_sizes: "small,medium,xpaas"
 dns_entries: "broker:{{ dnsip }},activemq:{{ dnsip }},node1dev:172.16.1.221"
+default_post_deploy: no
+district_mappings: "tk"
