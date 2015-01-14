@@ -3,5 +3,5 @@
 
 valid_gear_sizes: "small,medium,xpaas"
 dns_entries: "brokerdev:{{ dnsip }},activemq:{{ dnsip }},node1dev:172.16.1.221"
-default_post_deploy: no
-district_mappings: "small:node1.ose.example.net"
+default_post_deploy: "false"
+district_mappings: "small:node1dev.osedev.example.net"
