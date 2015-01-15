@@ -1,5 +1,5 @@
 ---
-- name: install node-small packages
+- name: install node packages
   yum: name={{ item }} state=present
   with_items:
     - openshift-enterprise-release

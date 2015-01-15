@@ -1,4 +1,17 @@
-#!/bin/bash -fuh
+#!/bin/bash -fh
+morerepos=""
+if [ -z $1 ] ;then
+  echo "please provide an argument"
+  rm -f /usr/local/src/rhsm_node_reposetup.flg
+  exit 23
+else
+  if [ $1 = "xpaas" ]; then
+    morerepos="xpaas"
+  else
+    morerepos=""
+  fi
+fi
+#
 subscription-manager repos --disable="*"
 subscription-manager repos --enable=rhel-6-server-ose-2.2-node-rpms	
 subscription-manager repos --enable=jb-eap-6-for-rhel-6-server-rpms
@@ -7,6 +20,9 @@ subscription-manager repos --enable=rhel-6-server-ose-2.2-jbosseap-rpms
 subscription-manager repos --enable=rhel-6-server-ose-2.2-jbossamq-rpms
 subscription-manager repos --enable=rhel-6-server-rpms                  
 subscription-manager repos --enable=rhel-server-rhscl-6-rpms
-touch /usr/local/src/rhsm_node-small_reposetup.flg
+if [ ${morerepos} = "xpaas" ] ; then
+  subscription-manager repos --enable rhel-6-server-ose-2.2-jbossfuse-rpms
+fi
+touch /usr/local/src/rhsm_node_reposetup.flg
 ##
 ##

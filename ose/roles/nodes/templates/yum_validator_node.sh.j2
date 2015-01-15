@@ -1,0 +1,20 @@
+#!/bin/bash -fh
+rswitches="-r node-eap -r node-amq"
+if [ -z $1 ] ;then
+  echo "please provide an argument"
+  rm -f /usr/local/src/yum-validator-run.flg 
+  exit 23
+else
+  if [ $1 = "xpaas" ]; then
+    rswitches="-r node-eap -r node-amq -r node-fuse"
+  else
+    rswitches="-r node-eap -r node-amq"
+  fi
+fi
+#
+#
+oo-admin-yum-validator -o 2.2 ${rswitches} --fix-all 
+touch /usr/local/src/yum-validator-run.flg 
+exit 0
+##
+##

@@ -1,9 +1,11 @@
 ---
 - name: install validator script
-  template: src=yum_validator_node-small.sh.j2 dest=/usr/local/src/yum_validator_node-small.sh owner=root group=root mode=0755 setype=_default
+  template: src=yum_validator_node.sh.j2 dest=/usr/local/src/yum_validator_node.sh owner=root group=root mode=0755 setype=_default
 - name: running yum validator
-  shell: /usr/local/src/yum_validator_node-small.sh creates=/usr/local/src/yum-validator-run.flg
-- name: install node-small components
+  shell: /usr/local/src/yum_validator_node.sh "{{ node_profile }}"
+  args:
+    creates: /usr/local/src/yum-validator-run.flg
+- name: install node components
   shell: /bin/bash "{{ ose_script }}" install_components="node" mcollective_password="{{ mcollective_password }}" domain="{{ ose_domain }}" hosts_domain="{{ ose_host_domain }}" named_ip_addr="{{ dnsip }}" broker_hostname="{{ broker_name }}" node_hostname="{{ nodename }}" node_profile="{{ node_profile }}" cartridges="all" 2>&1 | tee -a "{{ ose_script_log }}"
   args:
     creates: "{{ ose_script_log }}"

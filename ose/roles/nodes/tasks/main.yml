@@ -1,0 +1,4 @@
+---
+- include: nodes-repo-setup.yml
+- include: pkg-install.yml
+- include: nodes-install.yml

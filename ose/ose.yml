@@ -17,7 +17,7 @@
   hosts: node-small
   remote_user: "{{ uservar}}"
   roles:
-    -  node-small
+    -  nodes
 
 - name: Broker PostDeploy
   hosts: broker
