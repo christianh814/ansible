@@ -9,9 +9,25 @@ This playbook can be used to deploy an OSE infrastructre. This can be used to de
 Although very flexible, this playbook makes the following asumptions.
 
 * ssh-key access to all the nodes (with root or a user with sudo privlages)
-  * Although it's *possible*  to pass `--ask-pass` and `--ask-sudo-pass` to the `ansible-playbook` command; it's recommended to setup ssh-keys and paswordless sudo
+  * It's *possible*  to pass `--ask-pass` and `--ask-sudo-pass` to the `ansible-playbook` command; it's no recommended
 * You are running RHEL 6.x (current version doesn't support any EL variants)
-* Hostnames are set
+* Hostnames are set beforehand on the servers.
+* You have `git` and `ansible` installed on your system.
+* The target servers have `ssh` running and open and has `python` installed
+* Target Servers can reach the RHN
+
+Setup:
+
+1. Clone the repo on a system where you have installed ansible and have ssh access to the target servers.
+2. All configurations are done under the `ansible/ose/group_vars/all` file.
+  * The configuration file is well comented and should give you everything you need
+3. Run the `ansible-playbook` command within the `ansible/ose` directory.
+  * After a basic configuration; the command can be as simple as:
+  ```
+  ansible-playbook ose.yml -i hosts -e "uservar=ec2-user" --sudo 
+  ```
+  * Quick note about the `uservar` variable. This is the remote user to run the commands as. If you're using root you can omit the `--sudo` option and set `uservar=root`
+4. Profit!
 
 ## Lamp
 
