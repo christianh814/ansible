@@ -4,6 +4,9 @@
   with_items:
     - httpd
     - php
+    - php-mysql
+    - php-pear-MDB2-Driver-mysql
+    - php-pear-MDB2-Driver-mysqli
     - mod_ssl
 - name: instal apache template
   template: src=httpd.conf.j2 dest=/etc/httpd/conf/httpd.conf owner=root group=root mode=0644 setype=_default
@@ -11,6 +14,7 @@
   service: name=httpd state=started enabled=yes
 - name: network port setup
   firewalld: port=8080/tcp permanent=true state=enabled
+  notify: reload firewall
 - name: hosts entries for OS1
   template: src=etc_hosts.j2 dest=/etc/hosts owner=root group=root mode=0644 setype=_default
   when: rh_os1_host == "true"

@@ -1,0 +1,5 @@
+---
+## Handles for certian events
+
+- name: reload firewall
+  shell: /usr/bin/firewall-cmd --reload
