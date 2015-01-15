@@ -1,6 +1,12 @@
 ---
-- hosts: sandbox
+- hosts: web
   remote_user: "{{ uservar}}"
   sudo: true
   roles:
     - web
+
+- hosts: db
+  remote_user: "{{ uservar}}"
+  sudo: true
+  roles:
+    - db
