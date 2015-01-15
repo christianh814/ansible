@@ -4,5 +4,10 @@
   with_items:
     - ntp
     - vim
-- name: setup ntp service
-  service: name=ntpd state=started enabled=yes
+- name: setup default services
+  service: name={{ item }} state=started enabled=yes
+  with_items:
+    - ntp
+    - iptables
+- name: selinux configuration check
+  selinux: policy=targeted state=enforcing

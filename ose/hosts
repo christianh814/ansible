@@ -28,11 +28,11 @@ node[03:04].ose.example.net
 
 # "Large" Nodes group
 [node-large]
-node[05:06].ose.example.net
+node05.ose.example.net
 
 # "xpaas" Nodes group - Note that the fuse cartridge will me installed
 [node-xpaas]
-node[01:02].ose.example.net
+node06.ose.example.net
 
 ##
 ##
