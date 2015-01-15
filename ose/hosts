@@ -1,7 +1,7 @@
 #
 [broker]
-broker.chx.osecloud.com
+broker.ose.example.net
 [node-small]
-node1dev.osedev.example.net
+node01.ose.example.net
 ##
 ##

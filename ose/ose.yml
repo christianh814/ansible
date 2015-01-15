@@ -16,6 +16,8 @@
 - name: Install Node componets - Small
   hosts: node-small
   remote_user: "{{ uservar}}"
+  vars:
+    node_profile: small
   roles:
     -  nodes
 
