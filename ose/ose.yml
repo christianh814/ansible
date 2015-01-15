@@ -21,8 +21,34 @@
   roles:
     -  nodes
 
+- name: Install Node componets - Medium
+  hosts: node-medium
+  remote_user: "{{ uservar}}"
+  vars:
+    node_profile: medium
+  roles:
+    -  nodes
+
+- name: Install Node componets - Large
+  hosts: node-large
+  remote_user: "{{ uservar}}"
+  vars:
+    node_profile: large
+  roles:
+    -  nodes
+
+- name: Install Node componets - xpaas
+  hosts: node-xpaas
+  remote_user: "{{ uservar}}"
+  vars:
+    node_profile: xpaas
+  roles:
+    -  nodes
+
 - name: Broker PostDeploy
   hosts: broker
   remote_user: "{{ uservar}}"
   tasks:
     - include: tasks/broker_postdeploy.yml
+##
+##

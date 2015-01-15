@@ -13,3 +13,14 @@ dnsip: 172.16.1.220
 ose_script: /usr/local/src/openshift.sh
 ose_script_log: /usr/local/src/openshift.sh.inst.log
 mcollective_password: 7677aa8e409c47b9a826a52cd145f739
+#
+# Variables listed here are applicable node hosts
+
+nodename: "{{ ansible_hostname }}"
+
+# Variables listed here are applicable broker hosts
+
+valid_gear_sizes: "small,medium,xpaas"
+dns_entries: "brokerdev:{{ dnsip }},activemq:{{ dnsip }},node1dev:172.16.1.221"
+default_post_deploy: "false"
+district_mappings: "small:node1dev.osedev.example.net"

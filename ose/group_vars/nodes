@@ -1,5 +1,2 @@
 ---
-# Variables listed here are applicable node hosts
-
-nodename: "{{ ansible_hostname }}"
-node_profile: small
+# Variables listed here are applicable node hosts ONLY

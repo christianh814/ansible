@@ -1,7 +1,2 @@
 ---
-# Variables listed here are applicable broker hosts
-
-valid_gear_sizes: "small,medium,xpaas"
-dns_entries: "brokerdev:{{ dnsip }},activemq:{{ dnsip }},node1dev:172.16.1.221"
-default_post_deploy: "false"
-district_mappings: "small:node1dev.osedev.example.net"
+# Variables listed here are applicable broker hosts - ONLY
