@@ -1,26 +1,85 @@
 ---
-# Variables listed here are applicable to all host groups
+# This is the main OSE Ansible configuration file. Editing this file will configure your OSE installation. 
+# Although you can put variables elsewhere (and they might work)...there really shoudln't be a need to do so
 
+# It's worth noting that these can be overwritten at playbook runtime with the "-e" option (multiple times for more than one variable).
+# 	example:
+# 	  ansible-playbook ose.yml -i hosts -e 'rhn_os1_host="true"' -e 'ose_domain=ose.mydomain.com' [ other options] -f 10
+
+#
+## The rh_os1_host setting is specific to OS1 and there is no need to change the default unless you're deploying to OS1 (those who need to know what OS1 is already know)
+##	Valid Values: "true" or "false"
 rh_os1_host: "false"
+
+#
+## The rhsm_username and rhsm_password settings are for your Red Hat subscription credentials. You should probably pass these at run time with "-e" but you can use it in this file if you choose so.
 rhsm_username: XXXXXXXXXXXXXXXXXXXXX
 rhsm_password: XXXXXXXXXXXXXXXXXXXXX
 
-#OSE Specific
-ose_domain: osedev.example.net
-ose_host_domain: osedev.example.net
-broker_name: brokerdev.osedev.example.net
+#
+## The ose_domain and ose_host_domain are domains that have-been/will-be delegated to the broker. It is possible that these two configurations are the same but they don't have to be:
+##	example:
+##	  ose_domain: ose.example.com
+##	  ose_host_domain: ose.example.com
+##	OR
+##	  ose_domain: ose.example.com
+##	  ose_host_domain: hosts.example.com
+##
+## Configuration will depend on your settings:
+ose_domain: ose.example.net
+ose_host_domain: ose.example.net
+
+#
+## The broker_name is the FQDN of the broker host. The dnsip is usually the ip address of the broker
+broker_name: broker.ose.example.net
 dnsip: 172.16.1.220
+
+#
+## For console_user and console_user_password is the username/password to login to the web console and is usually used for the demoing. Best practice is to remove the entry and create new users
+console_user: demo
+console_user_password: 7677aa8e409c47b9a826a52cd145f739
+
+#
+## The mcollective_password is the credentials needed for communication. 
+## You can generate a random password like this:
+##	user@host$ uuidgen | sed -e 's/-//g'
+## 
+## Of course, you don't HAVE to randomly generate it...but it *is* best practice
+mcollective_password: 7677aa8e409c47b9a826a52cd145f739
+
+#
+## valid_gear_sizes are used to tell the broker what gear sized are valid. You can specify more than one if you seperate them with a comma
+## 	Valid Configs Are: small, medium, large, and xpaas
+##	Ex:
+##	  valid_gear_sizes: "small"
+##	OR
+##	  valid_gear_sizes: "small,medium,large,xpaas"
+valid_gear_sizes: "small,medium,xpaas"
+
+#
+## dns_entries are entries that will be entered into the brokers DNS server. They are keyvalue pairs with colons; each keyvalue pair is separated by a comma
+##	Ex:
+##	  dns_entries: "broker:192.168.1.10,activemq:192.168.1.10,node01:192.168.1.11
+## 
+## Note that you can reference other variables by using {{ var }} ...at minimum you need 1 broker, 1 activemq, and one node entry
+dns_entries: "broker:{{ dnsip }},activemq:{{ dnsip }},node1:172.16.1.221"
+
+#
+## If you would like to have the broker to automatically create districts for you; set default_post_deploy to "true". If this is set to false; you need to 
+## specify you district mappings
+default_post_deploy: "false"
+
+#
+## If you set default_post_deploy: "false" then you will need to  map your districts. They are keyvalue pairs each district is separated by a semicolon.
+## 	Ex:
+##	  district_mappings: "small:node1.ose.example.net,node2.ose.example.net;medium:node3.ose.example.net,node4.ose.example.net"
+district_mappings: "small:node1.ose.example.net,node2.ose.example.net;medium:node3.ose.example.net,node4.ose.example.net"
+
+#
+## Don't change these values. Bug in current version makes this not work if changed or removed
 ose_script: /usr/local/src/openshift.sh
 ose_script_log: /usr/local/src/openshift.sh.inst.log
-mcollective_password: 7677aa8e409c47b9a826a52cd145f739
-#
-# Variables listed here are applicable node hosts
-
 nodename: "{{ ansible_hostname }}"
-
-# Variables listed here are applicable broker hosts
-
-valid_gear_sizes: "small,medium,xpaas"
-dns_entries: "brokerdev:{{ dnsip }},activemq:{{ dnsip }},node1dev:172.16.1.221"
-default_post_deploy: "false"
-district_mappings: "small:node1dev.osedev.example.net"
+##
+# -30-
+##

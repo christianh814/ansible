@@ -1,7 +1,38 @@
 #
+##
+# Group definitions go here. A server is either a broker or a node. Depending on what kind of node profile you want; put your host[s] in the proper group
+# 	broker: Broker hosts will go here (although it's possible to have more than one broker...that functionality isn't supported at this time)
+# 	node-small:   Servers in this group will be placed in the "small" district
+# 	node-medium:  Servers in this group will be placed in the "medium" district
+# 	node-large:   Servers in this group will be placed in the "large" district
+# 	node-xpaas:   Servers in this group will be placed in the "xpaas" district and fuse will be installed
+# 
+# The "standard" ansible syntax applies here. Which means you can have ranges and wildcards.
+# 	Ex:
+# 		node[01:09].example.com
+# 		node*.example.com
+#
+##
+
+# Broker group
 [broker]
 broker.ose.example.net
+
+# "Small" Nodes group
 [node-small]
-node01.ose.example.net
+node[01:02].ose.example.net
+
+# "Medium" Nodes group
+[node-medium]
+node[03:04].ose.example.net
+
+# "Large" Nodes group
+[node-large]
+node[05:06].ose.example.net
+
+# "xpaas" Nodes group - Note that the fuse cartridge will me installed
+[node-xpaas]
+node[01:02].ose.example.net
+
 ##
 ##
