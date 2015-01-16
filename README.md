@@ -15,6 +15,7 @@ Although very flexible, this playbook makes the following asumptions.
 * You have `git` and `ansible` installed on your system.
 * The target servers have `ssh` running and open and has `python` installed
 * Target Servers can reach the RHN
+* You have delegated a domain or subdomain to the IP address that will be the broker
 
 Setup:
 
@@ -28,6 +29,11 @@ Setup:
   ```
   * Quick note about the `uservar` variable. This is the remote user to run the commands as. If you're using root you can omit the `--sudo` option and set `uservar=root`
 4. Profit!
+
+Note:
+
+* If you're using OS1; you probably want to put the servernames in your `/etc/hosts` file (unless you put IP addresses in the `ansible/ose/hosts` file)
+* EC2 users can pass the `--private-key` option to the playbook command to specify the key
 
 ## Lamp
 

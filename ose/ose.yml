@@ -3,19 +3,19 @@
 
 - name: apply common configuration to all servers
   hosts: all
-  remote_user: "{{ uservar}}"
+  remote_user: "{{ uservar }}"
   roles:
     - common
 
 - name: Install broker componets
   hosts: broker
-  remote_user: "{{ uservar}}"
+  remote_user: "{{ uservar }}"
   roles:
     - broker
 
 - name: Install Node componets - Small
   hosts: node-small
-  remote_user: "{{ uservar}}"
+  remote_user: "{{ uservar }}"
   vars:
     node_profile: small
   roles:
@@ -23,7 +23,7 @@
 
 - name: Install Node componets - Medium
   hosts: node-medium
-  remote_user: "{{ uservar}}"
+  remote_user: "{{ uservar }}"
   vars:
     node_profile: medium
   roles:
@@ -31,7 +31,7 @@
 
 - name: Install Node componets - Large
   hosts: node-large
-  remote_user: "{{ uservar}}"
+  remote_user: "{{ uservar }}"
   vars:
     node_profile: large
   roles:
@@ -39,7 +39,7 @@
 
 - name: Install Node componets - xpaas
   hosts: node-xpaas
-  remote_user: "{{ uservar}}"
+  remote_user: "{{ uservar }}"
   vars:
     node_profile: xpaas
   roles:
@@ -47,7 +47,7 @@
 
 - name: Broker PostDeploy
   hosts: broker
-  remote_user: "{{ uservar}}"
+  remote_user: "{{ uservar }}"
   tasks:
     - include: tasks/broker_postdeploy.yml
 ##
