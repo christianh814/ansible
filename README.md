@@ -21,18 +21,19 @@ Setup:
 
 1. Clone the repo on a system where you have installed ansible and have ssh access to the target servers.
 2. All configurations are done under the `ansible/ose/group_vars/all` file.
-  * The configuration file is well comented and should give you everything you need
+3. Host definitions are done under the `ansible/ose/hosts` file.
+  * The two configuration files are well comented and should give you everything you need
 3. Run the `ansible-playbook` command within the `ansible/ose` directory.
   * After a basic configuration; the command can be as simple as:
   ```
   ansible-playbook ose.yml -i hosts -e "uservar=ec2-user" --sudo 
   ```
-  * Quick note about the `uservar` variable. This is the remote user to run the commands as. If you're using root you can omit the `--sudo` option and set `uservar=root`
+  * Quick note about the `uservar` variable. This is the remote user that will run all the commands. This user needs to have sudo access. If you're using root you can omit the `--sudo` option and set `uservar=root`
 4. Profit!
 
 Note:
 
-* If you're using OS1; you probably want to put the servernames in your `/etc/hosts` file (unless you put IP addresses in the `ansible/ose/hosts` file)
+* If you're using OS1 (you know who you are); you probably want to put the servernames in your `/etc/hosts` file (unless you put IP addresses in the `ansible/ose/hosts` file)
 * EC2 users can pass the `--private-key` option to the playbook command to specify the key
 
 ## Lamp
