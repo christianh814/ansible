@@ -1,0 +1,6 @@
+---
+- hosts: el
+  remote_user: "{{ uservar}}"
+  sudo: true
+  roles:
+    - el

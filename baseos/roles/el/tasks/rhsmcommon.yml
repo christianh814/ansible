@@ -1,0 +1,12 @@
+---
+- name: configure rhsm
+  redhat_subscription: state=present  autosubscribe=true username="{{ rhsm_username }}" password="{{ rhsm_password }}"
+- name: hosts entries for OS1 
+  template: src=etc_hosts.j2 dest=/etc/hosts owner=root group=root mode=0644 setype=_default
+  when: rh_os1_host == "true"
+- name: installing provisioning dependencies
+  yum: name=libselinux-python state=present
+- name: install post register script
+  template: src=rhsm_post_enroll.sh.j2 dest=/usr/local/src/rhsm_post_enroll.sh owner=root group=root mode=0755 setype=_default
+- name: run post rhsm tasks
+  shell: /usr/local/src/rhsm_post_enroll.sh creates=/usr/local/src/rhsm_post_enroll.flg

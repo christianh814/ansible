@@ -1,0 +1,4 @@
+---
+- include: rhsmcommon.yml
+- include: base_packages.yml
+- include: files.yml
