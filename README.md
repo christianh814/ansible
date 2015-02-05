@@ -39,3 +39,7 @@ Note:
 ## Lamp
 
 This is a playbook that installs a webserver and a db server in a basic "lamp" stack. This is mostly for example and isn't really ready for any sort of production workflow.
+
+## BaseOS
+
+This is a playbook is for basic setup of an EL server (mainly for me)
