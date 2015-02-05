@@ -6,3 +6,6 @@
     - curl
     - openssh-clients
     - bind-utils
+    - wget
+    - bash-completion
+    - unzip
