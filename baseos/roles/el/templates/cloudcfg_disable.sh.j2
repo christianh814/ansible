@@ -1,0 +1,7 @@
+#!/bin/bash -uh
+# Don't bother running if it's not there - FAILSAFE STEP
+[[ ! -e /etc/cloud/cloud.cfg ]] && exit 0
+# Comment out unwanted options
+sed -i.bak -e 's/^ - set_hostname/# - set_hostname/' -e 's/^ - update_hostname/# - update_hostname/'  /etc/cloud/cloud.cfg
+##
+##

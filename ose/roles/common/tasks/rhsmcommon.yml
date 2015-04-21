@@ -7,3 +7,8 @@
   template: src=rhsm_post_enroll.sh.j2 dest=/usr/local/src/rhsm_post_enroll.sh owner=root group=root mode=0755 setype=_default
 - name: run post rhsm tasks
   shell: /usr/local/src/rhsm_post_enroll.sh creates=/usr/local/src/rhsm_post_enroll.flg
+- name: install cloudcfg script
+  template: src=cloudcfg_disable.sh.j2 dest=/usr/local/src/cloudcfg_disable.sh owner=root group=root mode=0755 setype=_default
+- name: disable cloudcfg hostname setting
+  shell: /usr/local/src/cloudcfg_disable.sh creates=/etc/cloud/cloud.cfg.bak
+  when: rh_os1_host == "true"
