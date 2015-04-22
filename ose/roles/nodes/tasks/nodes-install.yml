@@ -6,6 +6,6 @@
   args:
     creates: /usr/local/src/yum-validator-run.flg
 - name: install node components
-  shell: /bin/bash "{{ ose_script }}" install_components="node" mcollective_password="{{ mcollective_password }}" domain="{{ ose_domain }}" hosts_domain="{{ ose_host_domain }}" named_ip_addr="{{ dnsip }}" broker_hostname="{{ broker_name }}" node_hostname="{{ nodename }}" node_profile="{{ node_profile }}" cartridges="all" 2>&1 | tee -a "{{ ose_script_log }}"
+  shell: /bin/bash "{{ ose_script }}" install_components="node" mcollective_password="{{ mcollective_password }}" domain="{{ ose_domain }}" hosts_domain="{{ ose_host_domain }}" named_ip_addr="{{ dnsip }}" broker_hostname="{{ broker_name }}" node_hostname="{{ nodename }}" node_profile="{{ node_profile }}" node_ip_addr="{{ node_ip_addr }}" cartridges="all" 2>&1 | tee -a "{{ ose_script_log }}"
   args:
     creates: "{{ ose_script_log }}"

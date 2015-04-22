@@ -13,6 +13,15 @@
 # 		node*.example.com
 #
 ##
+# When using a NAT ip address use node_ip_addr and broker_ip_addr option
+# Ex:
+#       [broker]
+#       broker.ose.example.net broker_ip_addr=209.132.178.51
+#       
+#       [node-small]
+#       node1.ose.example.net node_ip_addr=209.132.178.94
+#       node2.ose.example.net node_ip_addr=209.132.178.105
+##
 
 # Broker group
 [broker]
