@@ -43,5 +43,15 @@ node05.ose.example.net
 [node-xpaas]
 node06.ose.example.net
 
+
+# !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+# 		DO NOT CHANGE THE BELOW LINES
+# !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+[allnodes:children]
+node-small
+node-medium
+node-large
+node-xpaas
+
 ##
 ##

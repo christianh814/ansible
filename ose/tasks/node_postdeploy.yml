@@ -2,13 +2,12 @@
 # post deploy for node
 
 - name: automatic postdeploy for node
-  shell: /bin/bash "{{ ose_script }}" actions=post_deploy install_components=node default_districts=true  broker_hostname="{{ broker_name }}" 2>&1 | tee -a /usr/local/src/openshift.sh.post-node.log
+  shell: /bin/bash "{{ ose_script }}" install_components=node domain="{{ ose_domain }}" broker_hostname="{{ broker_name }}" actions=post_deploy 2>&1 | tee -a /usr/local/src/openshift.sh.post-node.log
   args:
     creates: /usr/local/src/openshift.sh.post-node.log
   when: default_post_deploy == "true"
-
 - name: custom postdeploy for node
-  shell: /bin/bash "{{ ose_script }}" actions=post_deploy install_components=node default_districts=false broker_hostname="{{ broker_name }}" district_mappings="{{ district_mappings }}" 2>&1 | tee -a /usr/local/src/openshift.sh.post-node.log
+  shell: /bin/bash "{{ ose_script }}" install_components=node domain="{{ ose_domain }}" broker_hostname="{{ broker_name }}" actions=post_deploy 2>&1 | tee -a /usr/local/src/openshift.sh.post-node.log
   args:
     creates: /usr/local/src/openshift.sh.post-node.log
   when: default_post_deploy == "false"

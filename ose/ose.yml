@@ -50,5 +50,11 @@
   remote_user: "{{ uservar }}"
   tasks:
     - include: tasks/broker_postdeploy.yml
+
+- name: Node PostDeploy
+  hosts: allnodes
+  remote_user: "{{ uservar }}"
+  tasks:
+    - include: tasks/node_postdeploy.yml
 ##
 ##
