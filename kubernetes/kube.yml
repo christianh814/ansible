@@ -7,22 +7,23 @@
   roles:
     - common
 
-- name: Install broker componets
-  hosts: broker
+- name: Install registry componets
+  hosts: registry
   remote_user: "{{ uservar }}"
   roles:
-    - broker
+    - registry
 
-- name: Broker PostDeploy
-  hosts: broker
+- name: Install master componets
+  hosts: master
   remote_user: "{{ uservar }}"
-  tasks:
-    - include: tasks/broker_postdeploy.yml
+  roles:
+    - master
 
-- name: Node PostDeploy
-  hosts: allnodes
+- name: Install minion componets
+  hosts: minion
   remote_user: "{{ uservar }}"
-  tasks:
-    - include: tasks/node_postdeploy.yml
+  roles:
+    - minions
+
 ##
 ##
