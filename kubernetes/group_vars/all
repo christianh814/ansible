@@ -16,7 +16,7 @@ registry: rhub.example.com
 # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 ## Don't change the values below. Bug in current version makes this not work if changed or removed
 # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-minion_host: "{{ ansible_hostname }}"
+minion_host: "{{ ansible_fqdn }}"
 ##
 # -30-
 ##
