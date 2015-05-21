@@ -1,0 +1,22 @@
+---
+#
+## The rhsm_username and rhsm_password settings are for your Red Hat subscription credentials. You should probably pass these at run time with "-e" but you can use it in this file if you choose so.
+rhsm_username: XXXXXXXXXXXXXXXXXXXXX
+rhsm_password: XXXXXXXXXXXXXXXXXXXXX
+
+#
+minions: "minion1.example.com,minion2.example.com"
+
+#
+master: master.example.com
+
+#
+registry: registry.example.com
+
+# !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+## Don't change the values below. Bug in current version makes this not work if changed or removed
+# !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+minion_host: "{{ ansible_hostname }}"
+##
+# -30-
+##

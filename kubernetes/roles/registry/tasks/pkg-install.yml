@@ -1,0 +1,13 @@
+---
+- name: installing provisioning dependencies
+  yum: name=libselinux-python state=present
+- name: install post register script
+  template: src=rhsm_post_enroll.sh.j2 dest=/usr/local/src/rhsm_post_enroll.sh owner=root group=root mode=0755 setype=_default
+- name: run post rhsm tasks
+  shell: /usr/local/src/rhsm_post_enroll.sh creates=/usr/local/src/rhsm_post_enroll.flg
+- name: install docker-registry
+  yum: name={{ item }} state=present
+  with_items:
+    - docker
+    - docker-registry
+    - rsync

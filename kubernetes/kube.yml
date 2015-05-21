@@ -1,0 +1,28 @@
+---
+# This playbook deploys kubernetes
+
+- name: apply common configuration to all servers
+  hosts: all
+  remote_user: "{{ uservar }}"
+  roles:
+    - common
+
+- name: Install broker componets
+  hosts: broker
+  remote_user: "{{ uservar }}"
+  roles:
+    - broker
+
+- name: Broker PostDeploy
+  hosts: broker
+  remote_user: "{{ uservar }}"
+  tasks:
+    - include: tasks/broker_postdeploy.yml
+
+- name: Node PostDeploy
+  hosts: allnodes
+  remote_user: "{{ uservar }}"
+  tasks:
+    - include: tasks/node_postdeploy.yml
+##
+##

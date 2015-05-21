@@ -1,0 +1,13 @@
+---
+- name: configure controller-manager
+  template: src=etc_kubernetes_conrtoller-manager.j2 dest=/etc/kubernetes/controller-manager owner=root group=root mode=0644 setype=_default
+- name: configure kube config
+  template: src=etc_kubernetes_config.j2 dest=/etc/kubernetes/config owner=root group=root mode=0644 setype=_default
+- name: configure apiserver
+  template: src=etc_kubernetes_apiserver.j2 dest=/etc/kubernetes/apiserver owner=root group=root mode=0644 setype=_default
+- name: flannel config file
+  template: src=flannel-config.json.j2 dest=/usr/local/src/flannel-config.json owner=root group=root mode=0644 setype=_default
+- name: flannel config file
+  template: src=flannel-config.json.j2 dest=/usr/local/src/flannel-config.json owner=root group=root mode=0644 setype=_default
+- name: flannel systemd config
+  template: src=etc_sysconfig_flanneld.j2 dest=/etc/sysconfig/flanneld owner=root group=root mode=0644 setype=_default

@@ -1,0 +1,3 @@
+---
+- name: subscribe to rhsm
+  redhat_subscription: state=present  autosubscribe=true username="{{ rhsm_username }}" password="{{ rhsm_password }}"

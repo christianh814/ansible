@@ -1,0 +1,3 @@
+---
+- include: config-file-setup.yml
+- include: services.yml

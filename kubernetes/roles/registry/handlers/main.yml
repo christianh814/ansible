@@ -1,0 +1,5 @@
+---
+- name: reload systemd service deamon
+  shell: /usr/bin/systemctl --system daemon-reload
+- name: reload firewall
+  shell: /usr/bin/firewall-cmd --reload

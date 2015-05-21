@@ -1,0 +1,30 @@
+#
+##
+# Group definitions go here. A server is either a master or a minion.
+# 	master:   Master hosts will go here (although it's possible to have more than one master...that functionality isn't supported at this time)
+# 	minion:   Servers in this group will be placed in the "small" district
+# 	hub:      OPTIONAL: Hub is where you'll host a local docker registry
+# 
+# The "standard" ansible syntax applies here. Which means you can have ranges and wildcards.
+# 	Ex:
+# 		minion[01:09].example.com
+# 		minion*.example.com
+#
+##
+
+# Master group
+[master]
+master.example.net
+
+# Minion group
+[minion]
+minion[01:02].example.net
+
+[hub]
+hub.example.net
+
+##
+##
+
+##
+##

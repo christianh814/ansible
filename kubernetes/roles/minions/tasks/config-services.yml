@@ -1,0 +1,8 @@
+---
+- name: setup kubernetes minion services
+  service: name={{ item }} state=started enabled=yes
+  with_items:
+    - docker
+    - kube-proxy.service
+    - kubelet.service
+    - flanneld

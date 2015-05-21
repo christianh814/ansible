@@ -1,0 +1,19 @@
+---
+- name: install systemd docker script
+  template: src=etc_systemd_system_docker-registry.service.j2 dest=/etc/systemd/system/docker-registry.service owner=root group=root mode=0644 setype=_default
+  notify: reload systemd service deamon
+- name: install docker registry key file
+  template: src=dr.key.j2 dest=/etc/pki/tls/private/dr.key owner=root group=root mode=0644 setype=_default
+- name: install docker registry cert file
+  template: src=dr.crt.j2 dest=/etc/pki/tls/certs/dr.crt owner=root group=root mode=0644 setype=_default
+- name: create docker cert dir
+  file: path="/etc/docker/certs.d/{{ registry }}:5000" state=directory owner=root group=root mode=0755 setype=_default
+- name: Copy over cert file
+  synchronize: mode=pull src=/etc/pki/tls/certs/{{ item }} dest=/etc/docker/certs.d/{{ registry }}:5000/{{ item }} 
+  with_items:
+    - "dr.crt"
+- name: network port setup
+  firewalld: port=5000/tcp permanent=true state=enabled
+  notify: reload firewall
+- name: setup docker service
+  service: name=docker-registry state=started enabled=yes

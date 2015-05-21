@@ -1,0 +1,3 @@
+---
+- include: config-minion.yml
+- include: config-services.yml

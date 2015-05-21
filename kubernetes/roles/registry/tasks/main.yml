@@ -1,0 +1,3 @@
+---
+- include: pkg-install.yml
+- include: config-registry.yml

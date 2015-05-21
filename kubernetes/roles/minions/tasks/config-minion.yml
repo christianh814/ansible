@@ -1,0 +1,11 @@
+---
+- name: setup minion auth
+  shell: echo "{}" > /var/lib/kubelet/auth
+  args:
+    creates: /var/lib/kubelet/auth
+- name: configure kube config
+  template: src=etc_kubernetes_config.j2 dest=/etc/kubernetes/config owner=root group=root mode=0644 setype=_default
+- name: configure kube auth
+  template: src=etc_kubernetes_auth.j2 dest=/etc/kubernetes/kubelet owner=root group=root mode=0644 setype=_default
+- name: configure kube proxy
+  template: src=etc_kubernetes_proxy.j2 dest=/etc/kubernetes/proxy owner=root group=root mode=0644 setype=_default
