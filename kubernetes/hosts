@@ -23,6 +23,9 @@ minion[01:02].example.net
 [hub]
 hub.example.net
 
+[registry]
+registry.example.net
+
 ##
 ##
 
