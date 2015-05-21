@@ -9,9 +9,7 @@
 - name: create docker cert dir
   file: path="/etc/docker/certs.d/{{ registry }}:5000" state=directory owner=root group=root mode=0755 setype=_default
 - name: Copy over cert file
-  synchronize: mode=pull src=/etc/pki/tls/certs/{{ item }} dest=/etc/docker/certs.d/{{ registry }}:5000/{{ item }} 
-  with_items:
-    - "dr.crt"
+  template: src=dr.crt.j2 dest=/etc/docker/certs.d/{{ registry }}:5000/dr.crt owner=root group=root mode=0644 setype=_default
 - name: network port setup
   firewalld: port=5000/tcp permanent=true state=enabled
   notify: reload firewall

@@ -5,13 +5,13 @@ rhsm_username: XXXXXXXXXXXXXXXXXXXXX
 rhsm_password: XXXXXXXXXXXXXXXXXXXXX
 
 #
-minions: "minion1.example.com,minion2.example.com"
+minions: "rnode1.example.com,rnode2.example.com"
 
 #
-master: master.example.com
+master: rmaster.example.com
 
 #
-registry: registry.example.com
+registry: rhub.example.com
 
 # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 ## Don't change the values below. Bug in current version makes this not work if changed or removed

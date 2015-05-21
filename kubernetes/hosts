@@ -14,14 +14,14 @@
 
 # Master group
 [master]
-master.example.net
+rmaster.example.com
 
 # Minion group
 [minion]
-minion[01:02].example.net
+rnode[1:2].example.com
 
 [registry]
-registry.example.net
+rhub.example.com
 
 ##
 ##

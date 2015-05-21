@@ -9,3 +9,13 @@
   template: src=etc_kubernetes_auth.j2 dest=/etc/kubernetes/kubelet owner=root group=root mode=0644 setype=_default
 - name: configure kube proxy
   template: src=etc_kubernetes_proxy.j2 dest=/etc/kubernetes/proxy owner=root group=root mode=0644 setype=_default
+- name: install docker registry key file
+  template: src=dr.key.j2 dest=/etc/pki/tls/private/dr.key owner=root group=root mode=0644 setype=_default
+- name: install docker registry cert file
+  template: src=dr.crt.j2 dest=/etc/pki/tls/certs/dr.crt owner=root group=root mode=0644 setype=_default
+- name: create docker cert dir
+  file: path="/etc/docker/certs.d/{{ registry }}:5000" state=directory owner=root group=root mode=0755 setype=_default
+- name: Copy over cert file
+  template: src=dr.crt.j2 dest=/etc/docker/certs.d/{{ registry }}:5000/dr.crt owner=root group=root mode=0644 setype=_default
+- name: flannel systemd config
+  template: src=etc_sysconfig_flanneld.j2 dest=/etc/sysconfig/flanneld owner=root group=root mode=0644 setype=_default

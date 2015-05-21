@@ -7,6 +7,7 @@
     - kube-controller-manager
     - kube-scheduler
 - name: configure flannel on etcd
-  uri: url=http://127.0.0.1:4001/v2/keys/coreos.com/network/config method=PUT body="{{ lookup('file','/usr/local/src/flannel-config.json') }}" status_code=201
+  #uri: url="http://127.0.0.1:4001/v2/keys/coreos.com/network/config" method=PUT status_code=201 HEADER_Content-Type="application/json" body="{{ lookup('file','/usr/local/src/flannel-config.json') }}"
+  shell: /usr/bin/curl -L http://127.0.0.1:4001/v2/keys/coreos.com/network/config  -XPUT --data-urlencode value@/usr/local/src/flannel-config.json 
 - name: setup flannel service
   service: name=flanneld state=started enabled=yes
