@@ -19,3 +19,5 @@
   template: src=dr.crt.j2 dest=/etc/docker/certs.d/{{ registry }}:5000/dr.crt owner=root group=root mode=0644 setype=_default
 - name: Copy over flannel init script
   template: src=flannel_init.sh.j2 dest=/usr/local/src/flannel_init.sh owner=root group=root mode=0755 setype=_default
+- name: Copy over docker sysconfig file
+  template: src=etc_sysconfig_docker.j2 dest=/etc/sysconfig/docker owner=root group=root mode=0644 setype=_default

@@ -1,4 +1,6 @@
 ---
+- name: configure flannel on etcd
+  shell: /usr/local/src/flannel_init.sh creates=/usr/local/src/curl.out
 - name: setup kubernetes master services
   service: name={{ item }} state=started enabled=yes
   with_items:
@@ -6,7 +8,5 @@
     - kube-apiserver
     - kube-controller-manager
     - kube-scheduler
-- name: configure flannel on etcd
-  shell: /usr/local/src/flannel_init.sh creates=/usr/local/src/curl.out
-- name: setup flannel service
-  service: name=flanneld state=started enabled=yes
+    - docker
+    - flanneld
