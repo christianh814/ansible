@@ -1,0 +1,36 @@
+#!/bin/bash -uh
+#
+crl=/usr/bin/curl
+config=/usr/local/src/flannel-config.json
+url="http://127.0.0.1:4001/v2/keys/coreos.com/network/config"
+output=/usr/local/src/curl.out
+#
+if [ ! -e  ${output} ] ; then
+  # No file means we assume this hasn't ran yet. Let's check to see if the config file is even there first
+  if [ ! -e ${config} -o ! -s ${config} ] ; then
+    echo "FATAL: No config file foud!"
+    exit 2
+  else
+    ${crl} -sL -w "%{http_code}" ${url} -XPUT --data-urlencode value@${config} -o /dev/null > ${output}
+    status=$(< ${output})
+    if [ ${status:=999} -eq 201 ] ; then
+      exit 0
+    else
+      echo "Fatal, curl failed!"
+      rm ${output}
+      exit 2
+    fi
+  fi
+else
+  status=$(< ${output})
+  if [ ${status:=999} -eq 201 ] ; then
+    exit 0
+  else
+    echo "Fatal, curl failed!"
+    rm ${output}
+    exit 2
+  fi
+fi
+#
+exit 0
+###
