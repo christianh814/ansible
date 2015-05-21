@@ -14,4 +14,7 @@
   firewalld: port=5000/tcp permanent=true state=enabled
   notify: reload firewall
 - name: setup docker service
-  service: name=docker-registry state=started enabled=yes
+  service: name={{ item }} state=started enabled=yes
+  with_items:
+    - docker-registry
+    - docker
