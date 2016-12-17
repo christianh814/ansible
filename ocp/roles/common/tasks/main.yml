@@ -1,0 +1,3 @@
+---
+- include: rhsmcommon.yml
+- include: basepkgs.yml

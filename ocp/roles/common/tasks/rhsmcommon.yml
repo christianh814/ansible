@@ -1,0 +1,15 @@
+---
+- name: Subscribe To RHSM
+  redhat_subscription:
+    state: present
+    autosubscribe: true
+    username: "{{ lookup('env','RHSM_USERNAME') }}"
+    password: "{{ lookup('env','RHSM_PASSWORD') }}"
+    autosubscribe: true
+    pool: 8a85f981572d84b301572ec8f57326be
+- name: Subscribe to the proper repos
+  shell: subscription-manager repos --disable="*" && subscription-manager repos --enable="rhel-7-server-rpms" --enable="rhel-7-server-extras-rpms" --enable="rhel-7-server-ose-3.3-rpms" && touch /usr/local/src/.rhsm.repos
+  args:
+    creates: /usr/local/src/.rhsm.repos
+- name: Upgrade all packages
+  yum: name=* state=latest

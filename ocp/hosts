@@ -1,0 +1,18 @@
+# Masters
+[masters]
+master01.10.3.10.207.xip.io
+master02.10.3.10.211.xip.io
+master03.10.3.10.215.xip.io
+
+# Infra
+[infra]
+infra01.10.3.10.221.xip.io
+
+# Nodes
+[nodes]
+node01.10.3.10.193.xip.io
+node02.10.3.10.202.xip.io
+node03.10.3.10.187.xip.io
+
+##
+##

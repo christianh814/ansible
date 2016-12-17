@@ -1,0 +1,20 @@
+---
+- name: install base packages
+  yum: name={{ item }} state=present
+  with_items:
+    - wget
+    - git
+    - net-tools
+    - bind-utils
+    - iptables-services
+    - bridge-utils
+    - bash-completion
+    - vim
+    - yum-versionlock
+###- name: setup default services
+  ###service: name={{ item }} state=started enabled=yes
+  ###with_items:
+    ###- ntpd
+    ###- iptables
+- name: SElinux configuration check
+  selinux: policy=targeted state=enforcing

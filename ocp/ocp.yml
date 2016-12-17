@@ -1,0 +1,17 @@
+---
+# This playbook deploys the whole OSE stack.
+
+- name: Apply Common Configuration To All Servers
+  hosts: all
+  remote_user: "{{ lookup('env','CLOUD_USER') }}"
+  become: true
+  roles:
+    - common
+
+###- name: Node PostDeploy
+###  hosts: allnodes
+###  remote_user: "{{ uservar }}"
+###  tasks:
+###    - include: tasks/node_postdeploy.yml
+##
+##
